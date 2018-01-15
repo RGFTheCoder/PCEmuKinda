@@ -1,0 +1,22 @@
+{
+    "general": {
+        "name": "RGFPC"
+    },
+    "BIOS": {
+        "ver": "0.0.1",
+        "name": "BasicBIOS"
+    },
+    "cpu": {
+        "clock": 100,
+        "cores": 1,
+        "digitalcores": false
+    },
+    "gpu": {
+        "clock": 0,
+        "autorefresh": true
+    },
+    "motherboard": {},
+    "ram": {
+        "capacity": 15
+    }
+}

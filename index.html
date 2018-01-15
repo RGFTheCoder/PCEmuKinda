@@ -1,0 +1,34 @@
+<script src="motherboard.js"></script>
+<canvas id="screen" width=640px height=360px></canvas>
+<br> Color: <input type="color" id="color">
+<button onclick="runFile();">Run File</button>
+<div id="log"></div>
+<script>
+    var mb = new motherboard();
+    var code = require('fs').readFileSync('program.ttassembly').toString().split('\n')
+
+    console.log(code)
+    document.body.onload = function() {
+        setTimeout(runFile, 100)
+    };
+
+    function runFile() {
+        var fCode = [];
+        code.forEach(line => {
+            if (line !== "" && line.charAt(0) != "/" && line.charAt(1) != "/") {
+                fCode.push(line);
+            }
+            if (line == "pln\n") {
+                fCode.push("pln")
+            }
+        });
+        fCode.forEach(line => {
+            console.log(line);
+            var out = mb.bios.cpu.run(line);
+        })
+
+        console.log(fCode);
+    };
+
+    var color = document.getElementById("color");
+</script>
